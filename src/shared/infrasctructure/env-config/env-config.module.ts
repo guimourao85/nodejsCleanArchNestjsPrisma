@@ -1,4 +1,3 @@
-import { Module } from '@nestjs/common'
 import { DynamicModule, Module } from '@nestjs/common'
 import { EnvConfigService } from './env-config.service'
 import { ConfigModule, ConfigModuleOptions } from '@nestjs/config'
