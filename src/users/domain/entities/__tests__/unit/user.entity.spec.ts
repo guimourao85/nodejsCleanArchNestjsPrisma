@@ -6,11 +6,13 @@ describe('UserEntity unit tests', () => {
   let sut: UserEntity
 
   beforeEach(() => {
+    UserEntity.validate = jest.fn()
     props = UserDataBuilder({})
     sut = new UserEntity(props)
   })
 
   it('Constructor method', () => {
+    expect(UserEntity.validate).toHaveBeenCalled()
     expect(sut.props.name).toEqual(props.name)
     expect(sut.props.email).toEqual(props.email)
     expect(sut.props.password).toEqual(props.password)
@@ -18,18 +20,21 @@ describe('UserEntity unit tests', () => {
   })
 
   it('Getter of name field', () => {
+    expect(UserEntity.validate).toHaveBeenCalled()
     expect(sut.props.name).toBeDefined()
     expect(sut.props.name).toEqual(props.name)
     expect(typeof sut.props.name).toBe('string')
   })
 
   it('Setter of name field', () => {
+    expect(UserEntity.validate).toHaveBeenCalled()
     sut['name'] = 'other name'
     expect(sut.props.name).toEqual('other name')
     expect(typeof sut.props.name).toBe('string')
   })
 
   it('Getter of email field', () => {
+    expect(UserEntity.validate).toHaveBeenCalled()
     expect(sut.props.email).toBeDefined()
     expect(sut.props.email).toEqual(props.email)
     expect(typeof sut.props.email).toBe('string')
